@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shimar/owmc/issues"
   },
-  "homepage": "https://github.com/shimar/owmc#readme"
+  "homepage": "https://github.com/shimar/owmc#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
