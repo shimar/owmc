@@ -29,3 +29,5 @@ node_modules
 renderer/views/**/*.html
 
 renderer/bower_components
+
+renderer/styles/*.css
