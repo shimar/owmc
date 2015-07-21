@@ -1,11 +1,11 @@
 'use strict';
 
 var gulp = require('gulp');
-var jade = require('gulp-jade');
+var $    = require('gulp-load-plugins')();
 
 gulp.task('jade', function() {
   gulp.src('renderer/views/jade/**/*.jade')
-  .pipe(jade({
+  .pipe($.jade({
     pretty: true
   }))
   .pipe(gulp.dest('renderer/views'));
