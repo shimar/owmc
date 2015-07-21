@@ -18,6 +18,11 @@ gulp.task('styles', function() {
          .pipe(gulp.dest('renderer/styles'));
 });
 
+gulp.task('watch', function() {
+  gulp.watch('renderer/views/**/*.jade',  ['jade']);
+  gulp.watch('renderer/styles/**/*.less', ['styles']);
+});
+
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('default', ['clean'], function () {
