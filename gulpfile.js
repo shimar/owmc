@@ -23,6 +23,10 @@ gulp.task('watch', function() {
   gulp.watch('renderer/styles/**/*.less', ['styles']);
 });
 
+gulp.task('run', [ 'watch' ], function() {
+  return $.run('electron .').exec();
+});
+
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('default', ['clean'], function () {
