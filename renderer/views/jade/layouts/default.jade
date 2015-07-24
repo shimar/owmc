@@ -8,8 +8,11 @@ html(ng-app='OwmcApp')
     link(rel='stylesheet', href='../styles/main.css')
 
   body
-    .container
-      block content
+    .wrapper
+      .sidebar-wrapper
+      .content-wrapper
+        .container(ng-view)
+          block content
     
     script(type='text/javascript', src='../bower_components/angularjs/angular.min.js')
     script(type='text/javascript', src='../bower_components/angular-route/angular-route.min.js')
