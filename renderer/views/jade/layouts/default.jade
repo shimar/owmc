@@ -9,7 +9,7 @@ html(ng-app='OwmcApp')
 
   body
     .wrapper
-      .sidebar-wrapper
+      .sidebar-wrapper(ng-include="'shared/sidebar.html'")
       .content-wrapper
         .container(ng-view)
           block content
