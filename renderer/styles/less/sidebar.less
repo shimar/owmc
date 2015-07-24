@@ -6,12 +6,6 @@ ul.sidebar-nav {
   padding: 0;
   list-style: none;
 
-  .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-  }
-
   li {
     text-indent: 20px;
     line-height: 40px;
@@ -25,6 +19,13 @@ ul.sidebar-nav {
       &:focus {
         text-decoration: none;
       }
+    }
+
+    &.sidebar-brand {
+      text-indent: 0;
+      height: 100px;
+      line-height: 100px;
+      .text-center();
     }
   }
 }
