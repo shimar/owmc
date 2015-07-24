@@ -23,7 +23,7 @@ gulp.task('watch', function() {
   gulp.watch('renderer/styles/**/*.less', ['styles']);
 });
 
-gulp.task('run', [ 'watch' ], function() {
+gulp.task('run', [ 'jade', 'styles', 'watch' ], function() {
   return $.run('electron .').exec();
 });
 
