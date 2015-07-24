@@ -1,0 +1,30 @@
+ul.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: @sidebar-width;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+  }
+
+  li {
+    text-indent: 20px;
+    line-height: 40px;
+
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}
