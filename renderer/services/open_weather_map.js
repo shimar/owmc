@@ -5,7 +5,6 @@ var app = angular.module('OwmcApp');
 app.constant('OpenWeatherMapURL', 'http://api.openweathermap.org');
 
 var service = function($http, OpenWeatherMapURL) {
-  console.log('OpenWeatherMap loaded');
 
   var buildURL = function(params) {
     var url = OpenWeatherMapURL + '/data/2.5/weather?';
@@ -14,14 +13,14 @@ var service = function($http, OpenWeatherMapURL) {
     return url;
   };
 
-  var currentWeather = function(params) {
+  var weather = function(params) {
     return $http.get(buildURL(params)).then(function(response) {
              return response.data;
            });
   };
 
   return {
-    currentWeather: currentWeather
+    weather: weather
   };
 
 };

@@ -2,16 +2,13 @@
 
 var app = angular.module('OwmcApp');
 var ctrl = function($scope, OpenWeatherMap) {
-
-  console.log('MainController loaded');
-
-
+  $scope.weather = null;
   var params = {
-    id:    1859642,
-    APPID: 'Your API KEY'
+    id:    1859642,             // kawasaki
+    APPID: '26695d71e886d9477a5ac106cbc2e631'       // appid
   };
-  OpenWeatherMap.currentWeather(params).then(function(data) {
-    console.log(data);
+  OpenWeatherMap.weather(params).then(function(data) {
+    $scope.weather = data;
   });
 
 };
