@@ -3,12 +3,11 @@
 var app = angular.module('OwmcApp');
 var ctrl = function($scope) {
 
-  console.log('MainController loaded');
+  console.log('SidebarController loaded');
 
 };
-
 app.controller(
-  'MainController',
+  'SidebarController',
   [
     '$scope',
     ctrl
