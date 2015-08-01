@@ -1,17 +1,19 @@
-div#main-block
+div#main-block(ng-cloak)
   .row
     .col-md-12
-      h2 {{ weather.name }}
+      {{ weather.name }} ({{ weather.coord.lat }}, {{ weather.coord.lon }})
 
   .row
     .col-md-12
-      h2 {{ weather.weather[0].description }}
+      {{ weather.weather[0].main }}
+      br
+      {{ weather.weather[0].description }}
 
   .row
     .col-md-12
-      h2 {{ weather.main.temp }} {{ weather.main.pressure | number }}
+      {{ weather.main.temp }} {{ weather.main.pressure | number }}
 
   .row
     .col-md-12
-      h2 {{ weather.dt }}
+      {{ weather.dt*1000 | date }}
     
