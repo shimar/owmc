@@ -9,7 +9,8 @@ var service = function($http, OpenWeatherMapURL) {
   var buildURL = function(params) {
     var url = OpenWeatherMapURL + '/data/2.5/weather?';
     url += 'id=' + params.id;
-    url += 'APPID=' + params.APPID;
+    url += '&units=metric';
+    url += '&APPID=' + params.APPID;
     return url;
   };
 
