@@ -11,9 +11,31 @@ div#main-block(ng-cloak)
 
   .row
     .col-md-12
-      {{ weather.main.temp }} {{ weather.main.pressure | number }}
+      {{ weather.clouds.all }} %
 
   .row
     .col-md-12
-      {{ weather.dt*1000 | date }}
+      {{ weather.main.temp }}℃
+      br
+      {{ weather.main.temp_min }}℃
+      br
+      {{ weather.main.temp_max }}℃
+
+  .row
+    .col-md-12
+      {{ weather.main.humidity }}%
+
+  .row
+    .col-md-12
+      {{ weather.main.pressure | number }} hPa
+
+  .row
+    .col-md-12
+      {{ weather.wind.deg }} °
+    .col-md-12
+      {{ weather.wind.speed }} m/s
+
+  .row
+    .col-md-12
+      {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
     
