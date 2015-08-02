@@ -1,41 +1,41 @@
 div#main-block(ng-cloak)
   .row
     .col-md-12
-      {{ weather.name }} ({{ weather.coord.lat }}, {{ weather.coord.lon }})
+      | {{ weather.name }} ({{ weather.coord.lat }}, {{ weather.coord.lon }})
 
   .row
     .col-md-12
-      {{ weather.weather[0].main }}
+      | {{ weather.weather[0].main }}
       br
-      {{ weather.weather[0].description }}
+      | {{ weather.weather[0].description }}
 
   .row
     .col-md-12
-      {{ weather.clouds.all }} %
+      | {{ weather.clouds.all }} %
 
   .row
     .col-md-12
-      {{ weather.main.temp }}℃
+      | {{ weather.main.temp }}℃
       br
-      {{ weather.main.temp_min }}℃
+      | {{ weather.main.temp_min }}℃
       br
-      {{ weather.main.temp_max }}℃
+      | {{ weather.main.temp_max }}℃
 
   .row
     .col-md-12
-      {{ weather.main.humidity }}%
+      | {{ weather.main.humidity }}%
 
   .row
     .col-md-12
-      {{ weather.main.pressure | number }} hPa
+      | {{ weather.main.pressure | number }} hPa
 
   .row
     .col-md-12
-      {{ weather.wind.deg }} °
+      | {{ weather.wind.deg }} °
     .col-md-12
-      {{ weather.wind.speed }} m/s
+      | {{ weather.wind.speed }} m/s
 
   .row
     .col-md-12
-      {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
+      | {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
     
