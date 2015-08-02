@@ -21,6 +21,13 @@
     width: 100%;
     position: absolute;
     padding: 15px;
+    #content-block {
+      position: relative;
+      &.container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
   }
 
   &.toggled {
@@ -45,6 +52,13 @@
     .content-wrapper {
       padding-left: 20px;
       position: relative;
+      #content-block {
+        position: relative;
+        &.container-fluid {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
     }
 
     &.toggled {
