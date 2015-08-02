@@ -1,7 +1,7 @@
 div#main-block(ng-cloak)
   .row
     .col-md-12
-      | {{ weather.name }} ({{ weather.coord.lat }}, {{ weather.coord.lon }})
+      | {{ weather.name }},{{ weather.sys.country }} ({{ weather.coord.lat }}, {{ weather.coord.lon }})
 
   .row
     .col-md-12
