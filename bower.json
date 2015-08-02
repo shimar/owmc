@@ -23,6 +23,7 @@
     "fontawesome": "~4.3.0",
     "moment": "~2.10.3",
     "angular-bootstrap": "~0.13.0",
-    "openlayers3": "~3.0.0"
+    "openlayers3": "~3.0.0",
+    "angular-openlayers-directive": "~0.0.6"
   }
 }
