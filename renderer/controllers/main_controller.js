@@ -2,14 +2,22 @@
 
 var app = angular.module('OwmcApp');
 var ctrl = function($scope, OpenWeatherMap) {
+  $scope.weatherLoaded = false;
   $scope.weather = null;
+  $scope.center  = {
+    zoom: 12
+  };
+
   var params = {
     id:    1859642,             // kawasaki
-    APPID: 'Your API Key'       // appid
+    APPID: 'Your API KEY'
   };
+
   OpenWeatherMap.weather(params).then(function(data) {
     $scope.weather = data;
-    console.log($scope.weather);
+    $scope.center.lat = data.coord.lat;
+    $scope.center.lon = data.coord.lon;
+    $scope.weatherLoaded = true;
   });
 
 };

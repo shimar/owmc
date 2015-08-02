@@ -2,7 +2,8 @@
 
 angular.module('OwmcApp', [
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'openlayers-directive'
 ])
 .config(function($routeProvider) {
   $routeProvider
