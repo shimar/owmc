@@ -1,7 +1,6 @@
 div#main-block(ng-cloak)
-  .row(style="position:absolute;top:0;width:100%;")
-    .col-md-12
-      openlayers(ol-center="center" ng-if="weatherLoaded")
+  #map.row
+    openlayers(ol-center="center" height="600px" ng-if="weatherLoaded")
 
   .row(ng-if="weatherLoaded")
     .col-md-12
