@@ -15,7 +15,7 @@ var ctrl = function($scope, OpenWeatherMap) {
 
   var params = {
     id:    1859642,             // kawasaki
-    APPID: '26695d71e886d9477a5ac106cbc2e631'
+    APPID: 'Your API KEY'
   };
 
   OpenWeatherMap.weather(params).then(function(data) {
