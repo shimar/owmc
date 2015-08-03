@@ -7,10 +7,15 @@ var ctrl = function($scope, OpenWeatherMap) {
   $scope.center  = {
     zoom: 12
   };
+  $scope.defaults = {
+    controls: {
+      zoom: false
+    }
+  };
 
   var params = {
     id:    1859642,             // kawasaki
-    APPID: 'Your API KEY'
+    APPID: '26695d71e886d9477a5ac106cbc2e631'
   };
 
   OpenWeatherMap.weather(params).then(function(data) {
