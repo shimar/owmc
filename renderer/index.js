@@ -9,7 +9,7 @@ angular.module('OwmcApp', [
   $routeProvider
   .when('/', {
     controller: 'MainController',
-    templateUrl: 'main.html'
+    templateUrl: 'main/index.html'
   })
   .otherwise({
     redirectTo: '/'
