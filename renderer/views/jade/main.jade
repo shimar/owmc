@@ -5,3 +5,6 @@ div#main-block(ng-cloak)
   div(ng-if="weatherLoaded")
     .row
       .col-sm-8(ng-include="'main/weather_details.html'")
+      .col-sm-4
+        .form-group(style="margin-top:20px")
+          input(type="search").form-control
