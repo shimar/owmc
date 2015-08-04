@@ -11,6 +11,10 @@ angular.module('OwmcApp', [
     controller: 'MainController',
     templateUrl: 'main/index.html'
   })
+  .when('/settings', {
+    controller: 'SettingsController',
+    templateUrl: 'settings/index.html'
+  })
   .otherwise({
     redirectTo: '/'
   });
