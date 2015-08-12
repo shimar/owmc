@@ -6,8 +6,9 @@ var service = function($http, OpenWeatherMapAPIEndpoint) {
 
   var buildURLForWeather = function(params) {
     var url = OpenWeatherMapAPIEndpoint.weatherData;
-    url += '?id=' + params.id;
-    url += '&units=metric';
+    url += '?';
+    url += params.query;
+    url += '&units=' + params.units;
     url += '&APPID=' + params.APPID;
     return url;
   };

@@ -15,7 +15,8 @@ var ctrl = function($scope, OpenWeatherMap) {
   };
 
   $scope.params = {
-    id:    1859642,             // kawasaki
+    query: 'id=1859642',
+    units: 'metric',
     APPID: 'Your API KEY'
   };
 
@@ -24,15 +25,22 @@ var ctrl = function($scope, OpenWeatherMap) {
    */
   $scope.load = function() {
     OpenWeatherMap.weather($scope.params).then(function(data) {
-      $scope.weather    = data;
-      $scope.center.lat = data.coord.lat;
-      $scope.center.lon = data.coord.lon;
-      $scope.weatherLoaded = true;
+      if (data.cod == "200") {
+        $scope.weather    = data;
+        $scope.center.lat = data.coord.lat;
+        $scope.center.lon = data.coord.lon;
+        $scope.weatherLoaded = true;
+      } else {
+        // TODO show error message.
+      }
     });
   };
+
+  $scope.search = function() {
+    $scope.load();
+  };
+
   $scope.load();
-
-
 };
 
 app.controller(

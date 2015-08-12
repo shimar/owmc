@@ -1,19 +1,26 @@
 .row
   .col-sm-12
     h1 {{ weather.name }},{{ weather.sys.country }}
-      small ({{ weather.coord.lat }}, {{ weather.coord.lon }})
+    
+    p
+      i.fa.fa-location-arrow.fa-lg
+      | &nbsp;{{ weather.coord.lat }}, {{ weather.coord.lon }}
+      br
+      | {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
 
 .row
   .col-sm-12
-    | {{ weather.weather[0].main }}
-    | {{ weather.weather[0].description }}
-    | {{ weather.clouds.all }} %
+    h5 {{ weather.weather[0].main }}
+    p
+      | {{ weather.weather[0].description }}
+      br
+      | {{ weather.clouds.all }} %
 
 .row
   .col-sm-12
     | {{ weather.main.temp }}℃
-    | {{ weather.main.temp_min }}℃
-    | {{ weather.main.temp_max }}℃
+    br
+    | {{ weather.main.temp_min }}℃ - {{ weather.main.temp_max }}℃
 
 .row
   .col-sm-12
@@ -24,7 +31,3 @@
   .col-sm-12
     | {{ weather.wind.deg }} °
     | {{ weather.wind.speed }} m/s
-
-.row
-  .col-sm-12
-    | {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
