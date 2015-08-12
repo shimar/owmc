@@ -1,8 +1,9 @@
 div#main-block(ng-cloak)
   #map.row
-    openlayers(ol-center="center" ol-defaults="defaults" height="600px" ng-if="weatherLoaded")
+    openlayers(ol-center="center" ol-defaults="defaults" height="564px" ng-if="weatherLoaded")
 
   div(ng-if="weatherLoaded")
     .row
-      .col-sm-8(ng-include="'main/weather_details.html'")
-      .col-sm-4(ng-include="'main/search_box.html'")
+      .col-sm-6.col-sm-offset-3(ng-include="'main/search_box.html'")
+    .row
+      .col-sm-4(ng-include="'main/weather_details.html'")
