@@ -4,6 +4,6 @@ div#main-block(ng-cloak)
 
   div(ng-if="weatherLoaded")
     .row
-      .col-sm-6.col-sm-offset-3(ng-include="'main/search_box.html'")
-    .row
+      .col-sm-4(ng-include="'main/search_box.html'")
+    .row.weather-details
       .col-sm-4(ng-include="'main/weather_details.html'")

@@ -5,7 +5,7 @@ var ctrl = function($scope, OpenWeatherMap) {
   $scope.weatherLoaded = false;
   $scope.weather = null;
   $scope.center  = {
-    zoom: 12
+    zoom: 10
   };
 
   $scope.defaults = {
@@ -29,7 +29,9 @@ var ctrl = function($scope, OpenWeatherMap) {
         $scope.weather    = data;
         $scope.center.lat = data.coord.lat;
         $scope.center.lon = data.coord.lon;
+        $scope.center.zoom = 10;
         $scope.weatherLoaded = true;
+        console.log($scope.weather.weather[0].icon);
       } else {
         // TODO show error message.
       }

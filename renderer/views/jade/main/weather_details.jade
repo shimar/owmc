@@ -1,33 +1,37 @@
-.row
-  .col-sm-12
-    h1 {{ weather.name }},{{ weather.sys.country }}
-    
+.panel.panel-default.text-center
+  .panel-body
+    h2 {{ weather.name }},{{ weather.sys.country }}
     p
       i.fa.fa-location-arrow.fa-lg
       | &nbsp;{{ weather.coord.lat }}, {{ weather.coord.lon }}
       br
       | {{ weather.dt*1000 | date:'yyyy-MM-dd HH:mm:ss' }}
 
-.row
-  .col-sm-12
-    h5 {{ weather.weather[0].main }}
-    p
-      | {{ weather.weather[0].description }}
-      br
-      | {{ weather.clouds.all }} %
+    .row
+      p
+        weather-icon(icon='weather.weather[0].icon')
+        h4 {{ weather.weather[0].main }}
+        p
+          | {{ weather.weather[0].description }}
+          br
+          | {{ weather.clouds.all }} %
 
-.row
-  .col-sm-12
-    | {{ weather.main.temp }}℃
-    br
-    | {{ weather.main.temp_min }}℃ - {{ weather.main.temp_max }}℃
+    .row
+      p
+        i.wi.wi-thermometer.fa-lg
+        | &nbsp;{{ weather.main.temp }}
+        i.wi.wi-celsius
 
-.row
-  .col-sm-12
-    | {{ weather.main.humidity }}%
-    | {{ weather.main.pressure | number }} hPa
+    .row
+      p
+        i.wi.wi-humidity.fa-lg
+        | &nbsp;{{ weather.main.humidity }}%
 
-.row
-  .col-sm-12
-    | {{ weather.wind.deg }} °
-    | {{ weather.wind.speed }} m/s
+    .row
+      p
+        | {{ weather.main.pressure | number }} hPa
+
+    .row
+      .col-sm-12
+        | {{ weather.wind.deg }} °
+        | {{ weather.wind.speed }} m/s
