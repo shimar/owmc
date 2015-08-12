@@ -36,6 +36,7 @@ var ctrl = function($scope, OpenWeatherMap) {
    * OpenWeatherMap APIをコールし、天気情報をロードする。
    */
   $scope.load = function() {
+    $scope.resetErrorMessage();
     OpenWeatherMap.weather($scope.params).then(function(data) {
       if (data.cod == "200") {
         $scope.weather    = data;
@@ -43,15 +44,21 @@ var ctrl = function($scope, OpenWeatherMap) {
         $scope.center.lon = data.coord.lon;
         $scope.center.zoom = 10;
         $scope.weatherLoaded = true;
-        console.log($scope.weather.weather[0].icon);
       } else {
-        // TODO show error message.
+        $scope.errorMessage = data.message;
       }
     });
   };
 
   $scope.search = function() {
     $scope.load();
+  };
+
+  $scope.hasErrorMessage = function() {
+    return $scope.errorMessage && $scope.errorMessage.length > 0;
+  };
+  $scope.resetErrorMessage = function() {
+    $scope.errorMessage = null;
   };
 
   $scope.load();

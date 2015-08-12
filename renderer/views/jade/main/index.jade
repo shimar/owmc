@@ -4,7 +4,11 @@ div#main-block(ng-cloak)
       ol-layer(name="{{layer.name}}", ol-layer-properties="layer", ng-repeat="layer in layers | filter: { active :true }")
 
   div(ng-if="weatherLoaded")
-    .row
+    .row.weather-search-box
       .col-sm-4(ng-include="'main/search_box.html'")
-    .row.weather-details
+    .row(ng-show='hasErrorMessage()')
+      .col-sm-4
+        div.alert.alert-danger
+          p {{errorMessage}}
+    .row.weather-details(ng-hide='hasErrorMessage()')
       .col-sm-4(ng-include="'main/weather_details.html'")
