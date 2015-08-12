@@ -2,6 +2,7 @@
 
 var app = angular.module('OwmcApp');
 var ctrl = function($scope, OpenWeatherMap) {
+
   $scope.weatherLoaded = false;
   $scope.weather = null;
   $scope.center  = {
@@ -13,6 +14,17 @@ var ctrl = function($scope, OpenWeatherMap) {
       zoom: false
     }
   };
+
+  $scope.layers = [
+    {
+      name:   'Rain',
+      active: false,
+      source: {
+        type: 'OSM',
+        url:  'http://{a-c}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
+      }
+    }
+  ];
 
   $scope.params = {
     query: 'id=1859642',
