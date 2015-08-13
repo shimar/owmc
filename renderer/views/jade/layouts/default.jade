@@ -15,13 +15,17 @@ html(ng-app='OwmcApp')
         #content-block.container-fluid(ng-view)
           block content
     
+    //- script(type='text/javascript').
+    //-   window.$ = window.jQuery = require('../bower_components/jquery/dist/jquery.min.js');
+    //-   window.jQuery.noConflict();
+    //- script(type='text/javascript', src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(type='text/javascript', src='../bower_components/angularjs/angular.min.js')
     script(type='text/javascript', src='../bower_components/angular-route/angular-route.min.js')
     script(type='text/javascript', src='../bower_components/angular-bootstrap/ui-bootstrap.min.js')
-    script(type='text/javascript', src='../bower_components/moment/min/moment-with-locales.min.js')
     script(type='text/javascript', src='../bower_components/angular-sanitize/angular-sanitize.min.js')
     script(type='text/javascript', src='../bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.min.js')
     script(type='text/javascript', src='../bower_components/openlayers3/build/ol.js')
+    script(type='text/javascript', src='../bower_components/moment/min/moment-with-locales.min.js')
 
     
     script(type='text/javascript', src='../index.js')
