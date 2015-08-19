@@ -17,15 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "angularjs": "~1.4.3",
-    "angular-route": "~1.4.3",
-    "fontawesome": "~4.3.0",
-    "moment": "~2.10.3",
-    "angular-bootstrap": "~0.13.0",
-    "openlayers3": "~3.0.0",
-    "angular-openlayers-directive": "~0.0.6",
     "weather-icons": "~2.0.0",
-    "jquery": "~1.11.3"
+    "fontawesome": "~4.4.0"
   }
 }

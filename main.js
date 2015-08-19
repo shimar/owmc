@@ -16,7 +16,7 @@ app.on('ready', function() {
     width:  1024,
     height: 622
   });
-  mainWindow.loadUrl('file://' + __dirname + '/renderer/views/index.html');
+  mainWindow.loadUrl('file://' + __dirname + '/renderer/index.html');
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
