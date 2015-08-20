@@ -11,7 +11,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('browserify', function() {
-  return gulp.src('renderer/src/scripts/*.js')
+  return gulp.src([ 'renderer/src/scripts/*.js', 'renderer/src/scripts/*.jsx' ])
     .pipe($.browserify({
       transform: ['reactify']
     }))
@@ -20,8 +20,9 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('renderer/src/less/**/*.less',  ['styles']);
-  gulp.watch('renderer/src/scripts/**/*.js', ['browserify']);
+  gulp.watch('renderer/src/less/**/*.less',   ['styles']);
+  gulp.watch('renderer/src/scripts/**/*.js',  ['browserify']);
+  gulp.watch('renderer/src/scripts/**/*.jsx', ['browserify']);
 });
 
 gulp.task('run', [ 'browserify', 'styles', 'watch' ], function() {
