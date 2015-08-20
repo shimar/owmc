@@ -19,11 +19,15 @@
   "devDependencies": {
     "del": "^1.2.0",
     "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-run": "^1.6.8"
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.6.8",
+    "reactify": "^1.1.1",
+    "uglify-js": "^2.4.24"
   },
   "dependencies": {
     "classnames": "^2.1.3",
