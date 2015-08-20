@@ -11,10 +11,10 @@ gulp.task('styles', function() {
 });
 
 gulp.task('browserify', function() {
-  return gulp.src('src/scripts/*.js')
-    .pipe($.browserify([
+  return gulp.src('renderer/src/scripts/*.js')
+    .pipe($.browserify({
       transform: ['reactify']
-    ]))
+    }))
     .pipe($.rename('bundle.js'))
     .pipe(gulp.dest('renderer/js'));
 });
