@@ -20,14 +20,15 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('renderer/styles/**/*.less', ['styles']);
+  gulp.watch('renderer/src/less/**/*.less',  ['styles']);
+  gulp.watch('renderer/src/scripts/**/*.js', ['browserify']);
 });
 
 gulp.task('run', [ 'browserify', 'styles', 'watch' ], function() {
   return $.run('electron .').exec();
 });
 
-gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
+gulp.task('clean', require('del').bind(null, ['.tmp', 'dist', 'renderer/styles/main.css', 'renderer/js/bundle.js']));
 
 gulp.task('default', ['clean'], function () {
   console.log('this default task.');
