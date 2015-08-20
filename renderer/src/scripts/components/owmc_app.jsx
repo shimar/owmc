@@ -9,8 +9,10 @@ var OwmcApp = React.createClass({
     return (
       <div id="wrapper">
         <Map />
-        <Header />
-        <MainBlock />
+        <div className="contents">
+          <Header />
+          <MainBlock />
+        </div>
       </div>
     );
   }
