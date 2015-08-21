@@ -7,7 +7,7 @@ var WeatherActionCreator = require('../actions/weather_action_creator');
 var queryTypes = [
   { type: 0, caption: 'City Name', placeholder: 'ex. Kawasaki,JP' },
   { type: 1, caption: 'ID',        placeholder: 'ex. 1859642' },
-  { type: 2, caption: 'Location',  placeholder: 'ex. lat=35.9, lng=139,0' }
+  { type: 2, caption: 'Location',  placeholder: 'ex. lat=35.9&lon=139,0' }
 ];
 
 var SearchBox = React.createClass({
@@ -65,14 +65,11 @@ var SearchBox = React.createClass({
   },
 
   _onClickButton: function(event) {
-    console.log(event);
     this._fire();
   },
 
   _fire: function() {
-    console.log('fire!!');
     if (this.state.value.trim()) {
-      console.log(WeatherActionCreator);
       WeatherActionCreator.getWeather(this.state.queryType, this.state.value.trim());
     }
   },
