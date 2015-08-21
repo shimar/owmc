@@ -1,5 +1,8 @@
 var keyMirror = require('keymirror');
 
-module.exports = keyMirror({
-  // TODO
-});
+module.exports = {
+  ActionTypes: keyMirror({
+    GET_WEATHER:     null,
+    RECEIVE_WEATHER: null
+  })
+};
