@@ -1,7 +1,7 @@
 var React = require('react');
 
 var SearchBox = require('./search_box.jsx');
-var Weather   = require('./weather.jsx');
+var Weather   = require('./weather/weather.jsx');
 
 var WeatherStore = require('../stores/weather_store');
 
