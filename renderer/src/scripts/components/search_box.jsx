@@ -60,7 +60,7 @@ var SearchBox = React.createClass({
       queryType:   queryType.type,
       caption:     queryType.caption,
       placeholder: queryType.placeholder,
-      value:       this.state.value
+      value:       ''
     });
   },
 
