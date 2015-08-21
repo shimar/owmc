@@ -4,7 +4,7 @@ var SearchBox = React.createClass({
   render: function() {
     return (
       <div id="search-box" className="row">
-        <div className="col-sm-12 col-md-6">
+        <div className="col-sm-12 col-md-4">
           <div className="input-group">
             <div className="input-group-btn">
               <button type="button"
