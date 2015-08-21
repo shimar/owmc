@@ -56,7 +56,7 @@ var Map = React.createClass({
       ],
       view: new ol3.View({
         center: ol3.proj.fromLonLat([this.state.lon, this.state.lat]),
-        zoom:   8
+        zoom:   10
       })
     });
     WeatherStore.addChangeListener(this._onWeatherChange);
@@ -82,11 +82,11 @@ var Map = React.createClass({
     });
     var bounce = ol3.animation.bounce({
       duration: duration,
-      resolution: 4 * view.getResolution(),
+      resolution: 10 * view.getResolution(),
       start: start
     });
     _map.beforeRender(pan, bounce);
-    view.setZoom(8);
+    view.setZoom(10);
     view.setCenter(ol3.proj.fromLonLat([this.state.lon, this.state.lat]));
   },
 

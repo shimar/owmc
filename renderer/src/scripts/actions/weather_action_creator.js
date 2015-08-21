@@ -1,6 +1,6 @@
 var AppDispatcher     = require('../dispatcher/app_dispatcher');
 var OwmcConstants     = require('../constants/owmc_constants');
-var OpenWeatherMapApi = require('../lib/open_weather_map_api');
+var OpenWeatherMapApi = require('../lib/openweathermap/api');
 
 var ActionTypes = OwmcConstants.ActionTypes;
 

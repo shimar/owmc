@@ -1,24 +1,5 @@
-var WeatherReceiveActionCreator = require('../actions/weather_receive_action_creator');
-
-var APIEndpoints = {
-  baseUrl: 'http://api.openweathermap.org',
-  version: '/data/2.5',
-
-  weather: function() {
-    var path = '/weather';
-    return this.baseUrl + this.version + path;
-  },
-
-  forecast: function() {
-    var path = '/forecast';
-    return this.baseUrl + this.version + path;
-  },
-
-  dailyForcast: function() {
-    var path = '/forecast/daily';
-    return this.baseUrl + this.version + path;
-  }
-};
+var WeatherReceiveActionCreator = require('../../actions/weather_receive_action_creator');
+var Endpoints = require('./endpoints');
 
 function buildQueryStringForWeather(queryType, queryString) {
   var str = '';
@@ -38,7 +19,7 @@ function buildQueryStringForWeather(queryType, queryString) {
 }
 
 function buildURLForWeather(queryType, queryString) {
-  var url = APIEndpoints.weather();
+  var url = Endpoints.weather();
   url += '?';
   url += buildQueryStringForWeather(queryType, queryString);
   url += '&units=metric';
