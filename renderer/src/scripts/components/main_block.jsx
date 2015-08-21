@@ -3,7 +3,7 @@ var React = require('react');
 var SearchBox = require('./search_box.jsx');
 var Weather   = require('./weather.jsx');
 
-var WeatherStore   = require('../stores/weather_store');
+var WeatherStore = require('../stores/weather_store');
 
 function getWeatherState() {
   return {
@@ -26,7 +26,6 @@ var MainBlock = React.createClass({
   },
 
   _onWeatherChange: function() {
-    console.log('onWeatherChange');
     this.setState(getWeatherState());
   },
 
