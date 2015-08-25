@@ -19,6 +19,7 @@
   "dependencies": {
     "weather-icons": "~2.0.0",
     "fontawesome": "~4.4.0",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "animate.css": "~3.4.0"
   }
 }
