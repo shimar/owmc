@@ -15,11 +15,14 @@ var Weather = React.createClass({
 
   render: function() {
     if (Object.keys(this.props.weather).length < 1) {
-      return null;
+      return (
+        <div className="row weather animated fadeOut">
+        </div>
+      );
     }
 
     return (
-      <div className="row weather">
+      <div className="row weather animated fadeIn">
         <div className="col-xs-12 col-sm-12 col-md-12 text-center">
           <h2>{this.props.weather.name},{this.props.weather.sys.country}</h2>
           <Coord coord={this.props.weather.coord} />
