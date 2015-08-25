@@ -6,7 +6,6 @@ var ActionTypes = OwmcConstants.ActionTypes;
 
 module.exports = {
   getWeather: function(queryType, queryText) {
-    console.log(queryType, queryText);
     AppDispatcher.dispatch({
       type: ActionTypes.GET_WEATHER,
       queryType: queryType,
