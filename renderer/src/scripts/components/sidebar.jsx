@@ -32,7 +32,12 @@ var Sidebar = React.createClass({
     return (
       <div className="sidebar-nav container">
         <div className="row">
-          <div className="sidebar-brand">OWMC</div>
+          <div className="sidebar-brand">
+            <div className="brand-icon">
+              <i className="wi wi-day-sunny fa-3x"></i>
+            </div>
+            <div className="brand-name">OWMC</div>
+          </div>
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-12">
