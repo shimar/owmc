@@ -60,6 +60,8 @@ var Map = React.createClass({
       })
     });
     WeatherStore.addChangeListener(this._onWeatherChange);
+    $('#map').height($(window).height());
+    _map.updateSize();
   },
 
   componentWillUnmount: function() {

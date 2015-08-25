@@ -76,36 +76,34 @@ var SearchBox = React.createClass({
 
   render: function() {
     return (
-      <div id="search-box" className="row">
-        <div className="col-xs-12 col-sm-4 col-md-4">
-          <div className="input-group">
-            <div className="input-group-btn">
-              <button type="button"
-                className="btn btn-default dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expands="false">
-                {this.state.caption}
-                &nbsp;<span className="caret"></span>
-              </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" onClick={this._onClickQueryType}>ID</a></li>
-                <li><a href="#" onClick={this._onClickQueryType}>City Name</a></li>
-                <li><a href="#" onClick={this._onClickQueryType}>Location</a></li>
-              </ul>
-            </div>
-            <input type="text"
-              className="form-control"
-              placeholder={this.state.placeholder}
-              onChange={this._onChange}
-              value={this.state.value} />
-            <div className="input-group-btn">
-              <button type="button"
-                className="btn btn-primary"
-                onClick={this._onClickButton}>
-                <i className="fa fa-search"></i>
-              </button>
-            </div>
+      <div id="search-box">
+        <div className="input-group">
+          <div className="input-group-btn">
+            <button type="button"
+              className="btn btn-default dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expands="false">
+              {this.state.caption}
+              &nbsp;<span className="caret"></span>
+            </button>
+            <ul className="dropdown-menu">
+              <li><a href="#" onClick={this._onClickQueryType}>ID</a></li>
+              <li><a href="#" onClick={this._onClickQueryType}>City Name</a></li>
+              <li><a href="#" onClick={this._onClickQueryType}>Location</a></li>
+            </ul>
+          </div>
+          <input type="text"
+            className="form-control"
+            placeholder={this.state.placeholder}
+            onChange={this._onChange}
+            value={this.state.value} />
+          <div className="input-group-btn">
+            <button type="button"
+              className="btn btn-primary"
+              onClick={this._onClickButton}>
+              <i className="fa fa-search"></i>
+            </button>
           </div>
         </div>
       </div>

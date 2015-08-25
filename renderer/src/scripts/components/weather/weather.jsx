@@ -20,17 +20,13 @@ var Weather = React.createClass({
 
     return (
       <div className="row weather">
-        <div className="col-xs-12 col-sm-4 col-md-4">
-          <div className="panel panel-default text-center">
-            <div className="panel-body">
-              <h2>{this.props.weather.name},{this.props.weather.sys.country}</h2>
-              <Coord coord={this.props.weather.coord} />
-              <Timestamp timestamp={this.props.weather.dt} />
-              <Summary weather={this.props.weather.weather[0]} clouds={this.props.weather.clouds} />
-              <WeatherMain main={this.props.weather.main} />
-              <Wind wind={this.props.weather.wind} />
-            </div>
-          </div>
+        <div className="col-xs-12 col-sm-12 col-md-12 text-center">
+          <h2>{this.props.weather.name},{this.props.weather.sys.country}</h2>
+          <Coord coord={this.props.weather.coord} />
+          <Timestamp timestamp={this.props.weather.dt} />
+          <Summary weather={this.props.weather.weather[0]} clouds={this.props.weather.clouds} />
+          <WeatherMain main={this.props.weather.main} />
+          <Wind wind={this.props.weather.wind} />
         </div>
       </div>
     );

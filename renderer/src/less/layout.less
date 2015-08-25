@@ -1,22 +1,28 @@
+@sidebar-width: 300px;
+
 body {
-  padding-top: @navbar-height;
   #wrapper {
-    margin: 0;
-    padding: 0;
+    padding-left: @sidebar-width;
     position: relative;
 
-    #map {
-      position: absolute;
-      width: 100%;
-      height: 564px;
-      overflow-y: hidden;
+    .sidebar {
+      z-index: 1000;
+      position: fixed;
+      width: @sidebar-width;
+      height: 100%;
+      margin-left: -@sidebar-width;
+      overflow-y: auto;
     }
 
     .contents {
-      position: relative;
-      z-index: 1000;
-      #search-box {
-        padding: 15px 0;
+      width: 100%;
+      height: 100%;
+      margin-right: @sidebar-width;
+      & > .container-fluid {
+        position: relative;
+        padding-left: 0;
+        padding-right: 0;
+        height: 100%;
       }
     }
   }
