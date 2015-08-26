@@ -5,7 +5,6 @@ var ActionTypes = OwmcConstants.ActionTypes;
 
 module.exports = {
   receiveWeather: function(weather) {
-    console.log(weather);
     AppDispatcher.dispatch({
       type: ActionTypes.RECEIVE_WEATHER,
       weather: weather
