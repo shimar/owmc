@@ -29,22 +29,10 @@ var SearchBox = React.createClass({
     };
   },
 
-  getInitialState: function() {
-    return {
-      queryType:   this.props.queryType,
-      caption:     this.props.caption,
-      placeholder: this.props.placeholder,
-      value:       this.props.value
-    };
-  },
-
-  _onChange: function(event) {
-    this.setState({
-      queryType:   this.state.queryType,
-      caption:     this.state.caption,
-      placeholder: this.state.placeholder,
-      value:       event.target.value
-    });
+  _onQueryTextChange: function(event) {
+    this.props.onUserInput(
+      this.refs.textInput.getDOMNode().value
+    );
   },
 
   _onClickQueryType: function(event) {
@@ -56,12 +44,9 @@ var SearchBox = React.createClass({
     var queryType = _.find(queryTypes, function(queryType) {
       return queryType.caption === caption;
     });
-    this.setState({
-      queryType:   queryType.type,
-      caption:     queryType.caption,
-      placeholder: queryType.placeholder,
-      value:       ''
-    });
+    this.props.queryType = queryType.type;
+    this.props.caption   = queryType.caption;
+    this.props.placeholder = queryType.placeholer;
   },
 
   _onClickButton: function(event) {
@@ -69,8 +54,8 @@ var SearchBox = React.createClass({
   },
 
   _fire: function() {
-    if (this.state.value.trim()) {
-      WeatherActionCreator.getWeather(this.state.queryType, this.state.value.trim());
+    if (this.props.value.trim()) {
+      WeatherActionCreator.getWeather(this.props.queryType, this.props.value.trim());
     }
   },
 
@@ -84,7 +69,7 @@ var SearchBox = React.createClass({
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expands="false">
-              {this.state.caption}
+              {this.props.caption}
               &nbsp;<span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
@@ -95,9 +80,10 @@ var SearchBox = React.createClass({
           </div>
           <input type="text"
             className="form-control"
-            placeholder={this.state.placeholder}
-            onChange={this._onChange}
-            value={this.state.value} />
+            placeholder={this.props.placeholder}
+            onChange={this._onQueryTextChange}
+            value={this.props.value}
+            ref="textInput" />
           <div className="input-group-btn">
             <button type="button"
               className="btn btn-primary"

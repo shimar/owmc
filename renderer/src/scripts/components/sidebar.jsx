@@ -10,10 +10,17 @@ function getWeatherState() {
   };
 }
 
+function getState() {
+  return {
+    weather:   WeatherStore.get(),
+    queryText: ''
+  };
+}
+
 var Sidebar = React.createClass({
 
   getInitialState: function() {
-    return getWeatherState();
+    return getState();
   },
 
   componentDidMount: function() {
@@ -25,7 +32,14 @@ var Sidebar = React.createClass({
   },
 
   _onWeatherChange: function() {
-    this.setState(getWeatherState());
+    this.setState(getState());
+  },
+
+  // for searchbox.
+  _onUserInput: function(queryText) {
+    var state = getState();
+    state.queryText = queryText;
+    this.setState(state);
   },
 
   render: function() {
@@ -41,10 +55,10 @@ var Sidebar = React.createClass({
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-12">
-            <SearchBox />
+            <SearchBox value={this.state.queryText} onUserInput={this._onUserInput} />
           </div>
         </div>
-        <Weather weather={this.state.weather}/>
+        <Weather weather={this.state.weather} />
       </div>
     );
   }
