@@ -4,29 +4,11 @@ var ReactPropTypes = React.PropTypes;
 
 var WeatherActionCreator = require('../actions/weather_action_creator');
 
-var queryTypes = [
-  { type: 0, caption: 'City Name', placeholder: 'ex. Kawasaki,JP' },
-  { type: 1, caption: 'ID',        placeholder: 'ex. 1859642' },
-  { type: 2, caption: 'Location',  placeholder: 'ex. lat=35.9&lon=139,0' }
-];
-
 var SearchBox = React.createClass({
 
   propTypes: {
-    queryType:   ReactPropTypes.number,
-    caption:     ReactPropTypes.string,
-    placeholder: ReactPropTypes.string,
-    value:       ReactPropTypes.string
-  },
-
-  getDefaultProps: function() {
-    var queryType = queryTypes[0];
-    return {
-      queryType:   queryType.type,
-      caption:     queryType.caption,
-      placeholder: queryType.placeholder,
-      value:       ''
-    };
+    queryType: ReactPropTypes.object,
+    value:     ReactPropTypes.string
   },
 
   _onQueryTextChange: function(event) {
@@ -35,18 +17,9 @@ var SearchBox = React.createClass({
     );
   },
 
-  _onClickQueryType: function(event) {
-    var src = $(event.target);
-    this._changeQueryType(src.text());
-  },
-
-  _changeQueryType: function(caption) {
-    var queryType = _.find(queryTypes, function(queryType) {
-      return queryType.caption === caption;
-    });
-    this.props.queryType = queryType.type;
-    this.props.caption   = queryType.caption;
-    this.props.placeholder = queryType.placeholer;
+  _onQueryTypeClick: function(event) {
+    event.preventDefault();
+    console.log('_onQueryTypeClick');
   },
 
   _onClickButton: function(event) {
@@ -60,6 +33,11 @@ var SearchBox = React.createClass({
   },
 
   render: function() {
+    var queryTypeList = [];
+    _.forEach(this.props.queryTypes, function(queryType, index) {
+      queryTypeList.push(<li key={index} onClick={this._onQueryTypeClick}><a href='#'>{queryType.caption}</a></li>);
+    });
+
     return (
       <div id="search-box">
         <div className="input-group">
@@ -69,18 +47,16 @@ var SearchBox = React.createClass({
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expands="false">
-              {this.props.caption}
+              {this.props.queryType.caption}
               &nbsp;<span className="caret"></span>
             </button>
             <ul className="dropdown-menu">
-              <li><a href="#" onClick={this._onClickQueryType}>ID</a></li>
-              <li><a href="#" onClick={this._onClickQueryType}>City Name</a></li>
-              <li><a href="#" onClick={this._onClickQueryType}>Location</a></li>
+              {queryTypeList}
             </ul>
           </div>
           <input type="text"
             className="form-control"
-            placeholder={this.props.placeholder}
+            placeholder={this.props.queryType.placeholder}
             onChange={this._onQueryTextChange}
             value={this.props.value}
             ref="textInput" />

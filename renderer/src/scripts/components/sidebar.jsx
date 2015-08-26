@@ -4,6 +4,12 @@ var Weather = require('./weather/weather.jsx');
 
 var WeatherStore = require('../stores/weather_store');
 
+var queryTypes = [
+  { type: 0, caption: 'City Name', placeholder: 'ex. Kawasaki,JP' },
+  { type: 1, caption: 'ID',        placeholder: 'ex. 1859642' },
+  { type: 2, caption: 'Location',  placeholder: 'ex. lat=35.9&lon=139,0' }
+];
+
 function getWeatherState() {
   return {
     weather: WeatherStore.get()
@@ -12,8 +18,9 @@ function getWeatherState() {
 
 function getState() {
   return {
-    weather:   WeatherStore.get(),
-    queryText: ''
+    weather:        WeatherStore.get(),
+    queryText:      '',
+    queryTypeIndex: 0
   };
 }
 
@@ -55,7 +62,10 @@ var Sidebar = React.createClass({
         </div>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-12">
-            <SearchBox value={this.state.queryText} onUserInput={this._onUserInput} />
+            <SearchBox queryType={queryTypes[this.state.queryTypeIndex]}
+                       queryTypes={queryTypes}
+                       value={this.state.queryText}
+                       onUserInput={this._onUserInput} />
           </div>
         </div>
         <Weather weather={this.state.weather} />
