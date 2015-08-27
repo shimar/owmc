@@ -1,12 +1,14 @@
 var _     = require('lodash');
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
+var classNames = require('classnames');
 
 var SearchBox = React.createClass({
 
   propTypes: {
     queryType: ReactPropTypes.object,
-    value:     ReactPropTypes.string
+    value:     ReactPropTypes.string,
+    searching: ReactPropTypes.bool
   },
 
   _onQueryTextChange: function(event) {
@@ -56,7 +58,9 @@ var SearchBox = React.createClass({
             <button type="button"
               className="btn btn-primary"
               onClick={this._onClickButton}>
-              <i className="fa fa-search"></i>
+              <i className={classNames('fa',
+                {'fa-search': !this.props.searching, 'fa-spinner': this.props.searching, 'fa-spin': this.props.searching }
+              )}></i>
             </button>
           </div>
         </div>
