@@ -3,6 +3,8 @@ var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var classNames = require('classnames');
 
+var ENTER_KEY_CODE = 13;
+
 var SearchBox = React.createClass({
 
   propTypes: {
@@ -19,6 +21,12 @@ var SearchBox = React.createClass({
 
   _onClickButton: function(event) {
     this._fire(event);
+  },
+
+  _onKeyDown: function(event) {
+    if (event.keyCode === ENTER_KEY_CODE) {
+      this._fire(event);
+    }
   },
 
   _fire: function(event) {
@@ -52,6 +60,7 @@ var SearchBox = React.createClass({
             className="form-control"
             placeholder={this.props.queryType.placeholder}
             onChange={this._onQueryTextChange}
+            onKeyDown={this._onKeyDown}
             value={this.props.value}
             ref="textInput" />
           <div className="input-group-btn">
