@@ -42,17 +42,16 @@ var Sidebar = React.createClass({
   },
 
   _onWeatherChange: function() {
-    var state = getState();
-    state.searching = false;
-    this.setState(state);
-    console.log(state);
+    this.setState({
+      weather:   WeatherStore.get(),
+      queryText: '',
+      searching: false
+    });
   },
 
   // for searchbox.
   _onUserInput: function(queryText) {
-    var state = getState();
-    state.queryText = queryText;
-    this.setState(state);
+    this.setState({queryText: queryText});
   },
 
   _onQueryTypeClick: function(envet) {
@@ -60,16 +59,12 @@ var Sidebar = React.createClass({
     var selectedQueryTypeIndex = _.findIndex(queryTypes, function(item) {
       return item.caption == caption;
     });
-    var state = getState();
-    state.queryTypeIndex = selectedQueryTypeIndex;
-    this.setState(state);
+    this.setState({ queryTypeIndex: selectedQueryTypeIndex });
   },
 
   _onSearch: function(event) {
     if (this.state.queryText.trim()) {
-      var state = getState();
-      state.searching = true;
-      this.setState(state);
+      this.setState({ searching: true });
       var queryType = queryTypes[this.state.queryTypeIndex];
       WeatherActionCreator.getWeather(queryType.type, this.state.queryText.trim());
     }
