@@ -2,8 +2,6 @@ var _     = require('lodash');
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
-var WeatherActionCreator = require('../actions/weather_action_creator');
-
 var SearchBox = React.createClass({
 
   propTypes: {
@@ -17,25 +15,19 @@ var SearchBox = React.createClass({
     );
   },
 
-  _onQueryTypeClick: function(event) {
-    event.preventDefault();
-    console.log('_onQueryTypeClick');
-  },
-
   _onClickButton: function(event) {
-    this._fire();
+    this._fire(event);
   },
 
-  _fire: function() {
-    if (this.props.value.trim()) {
-      WeatherActionCreator.getWeather(this.props.queryType, this.props.value.trim());
-    }
+  _fire: function(event) {
+    this.props.onSearch(event);
   },
 
   render: function() {
     var queryTypeList = [];
+    var handler = this.props.onQueryTypeClick;
     _.forEach(this.props.queryTypes, function(queryType, index) {
-      queryTypeList.push(<li key={index} onClick={this._onQueryTypeClick}><a href='#'>{queryType.caption}</a></li>);
+      queryTypeList.push(<li key={index} onClick={handler}><a href='#'>{queryType.caption}</a></li>);
     });
 
     return (

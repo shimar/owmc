@@ -34,8 +34,8 @@ var WeatherStore = assign({}, EventEmitter.prototype, {
 WeatherStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
   case ActionTypes.GET_WEATHER:
-    update({});
-    WeatherStore.emitChange();
+    //update({});
+    //WeatherStore.emitChange();
     break;
   case ActionTypes.RECEIVE_WEATHER:
     update(action.weather);
