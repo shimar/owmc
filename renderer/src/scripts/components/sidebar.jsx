@@ -66,6 +66,10 @@ var Sidebar = React.createClass({
     if (this.state.queryText.trim()) {
       this.setState({ searching: true });
       var queryType = queryTypes[this.state.queryTypeIndex];
+
+      // TODO
+      // id以外のパラメータで検索される場合は、はじめに都市をfindする。
+      // 結果リストを並べてリンクとして表示、つつくと詳細表示。
       WeatherActionCreator.getWeather(queryType.type, this.state.queryText.trim());
     }
   },
