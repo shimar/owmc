@@ -12,7 +12,7 @@ var Timestamp = React.createClass({
   render: function() {
     return (
       <p>
-        {moment(this.props.timestamp * 1000).format('YYYY-MM-DD  HH:mm')}
+        {moment(this.props.timestamp * 1000).fromNow()}
       </p>
     );
   }
