@@ -1,6 +1,6 @@
 var Endpoints = {
-  baseUrl: 'http://api.openweathermap.org',
-  version: '/data/2.5',
+  baseUrl: 'http://api.openweathermap.org/data/',
+  version: '2.5',
 
   weather: function() {
     var path = '/weather';
@@ -14,6 +14,11 @@ var Endpoints = {
 
   dailyForcast: function() {
     var path = '/forecast/daily';
+    return this.baseUrl + this.version + path;
+  },
+
+  city: function() {
+    var path = '/find';
     return this.baseUrl + this.version + path;
   },
 
