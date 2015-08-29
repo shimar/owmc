@@ -18,6 +18,20 @@ function buildQueryStringForWeather(queryType, queryString) {
   return str;
 }
 
+function buildQueryStringForCity(queryType, queryString) {
+  var str = 'type=accurate&';
+  switch (queryType) {
+  case 0:
+    str = 'q=' + queryString;
+    break;
+  case 2:
+    str = queryString;
+  default:
+    break;
+  }
+  return str;
+}
+
 function buildURLForWeather(queryType, queryString) {
   var url = Endpoints.weather();
   url += '?';
@@ -29,7 +43,7 @@ function buildURLForWeather(queryType, queryString) {
 function buildURLForCity(queryType, queryString) {
   var url = Endpoints.city();
   url += '?';
-  url += buildQueryStringForWeather(queryType, queryString);
+  url += buildQueryStringForCity(queryType, queryString);
   url += '&units=metric';
   return url;
 }
