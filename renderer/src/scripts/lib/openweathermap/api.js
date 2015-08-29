@@ -26,9 +26,23 @@ function buildURLForWeather(queryType, queryString) {
   return url;
 }
 
+function buildURLForCity(queryType, queryString) {
+  var url = Endpoints.city();
+  url += '?';
+  url += buildQueryStringForWeather(queryType, queryString);
+  url += '&units=metric';
+  return url;
+}
+
 var OpenWeatherMapApi = {
   getWeather: function(queryType, queryText) {
     $.get(buildURLForWeather(queryType, queryText), function(data) {
+      WeatherReceiveActionCreator.receiveWeather(data);
+    });
+  },
+
+  findCity: function(queryType, queryText) {
+    $.get(buildURLForCity(queryType, queryText), function(data) {
       WeatherReceiveActionCreator.receiveWeather(data);
     });
   }
