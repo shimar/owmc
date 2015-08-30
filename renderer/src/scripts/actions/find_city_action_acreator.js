@@ -11,6 +11,6 @@ module.exports = {
       queryType: queryType,
       queryText: queryText
     });
-    OpenWeatherMapApi.getWeather(queryType, queryText);
+    OpenWeatherMapApi.findCity(queryType, queryText);
   }
 };

@@ -3,7 +3,9 @@ var _ = require('lodash');
 var SearchBox = require('./search_box.jsx');
 var Weather = require('./weather/weather.jsx');
 
-var WeatherActionCreator = require('../actions/weather_action_creator');
+var WeatherActionCreator  = require('../actions/weather_action_creator');
+var FindCityActionCreator = require('../actions/find_city_action_creator');
+
 var WeatherStore = require('../stores/weather_store');
 
 var queryTypes = [
@@ -70,7 +72,11 @@ var Sidebar = React.createClass({
       // TODO
       // id以外のパラメータで検索される場合は、はじめに都市をfindする。
       // 結果リストを並べてリンクとして表示、つつくと詳細表示。
-      WeatherActionCreator.getWeather(queryType.type, this.state.queryText.trim());
+      if (queryType.type === 1) {
+        WeatherActionCreator.getWeather(queryType.type, this.state.queryText.trim());
+      } else {
+        FindCityActionCreator.findCity(queryType.type, this.state.queryText.trim());
+      }
     }
   },
 
