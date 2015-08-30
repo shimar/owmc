@@ -3,7 +3,9 @@ var ReactPropTypes = React.PropTypes;
 
 var WeatherStore = require('../stores/weather_store');
 
-var _map = null;
+var _map         = null;
+var _iconFeature = null;
+var _iconStyle   = null;
 
 function getWeatherState() {
   var cities  = WeatherStore.getCities();
@@ -34,8 +36,8 @@ var Map = React.createClass({
 
   getDefaultProps: function() {
     return {
-      lat: 37.41,
-      lon: 8.82
+      lat: 0,
+      lon: 0
     };
   },
 
@@ -47,6 +49,24 @@ var Map = React.createClass({
   },
 
   componentDidMount: function() {
+    iconFeature = new ol3.Feature({
+      geometry: new ol3.geom.Point([0, 0]),
+      name: 'Name is a name',
+      population: 4000,
+      rainfall: 500
+    });
+
+    iconStyle = new ol3.style.Style({
+      image: new ol3.style.Icon(({
+        anchor: [0.5, 46],
+        anchorXUnits: 'pixels',
+        anchorYUnits: 'pixels',
+        opacity: 0.75,
+        src: 'images/pin32.png'
+      }))
+    });
+    iconFeature.setStyle(iconStyle);
+
     _map = new ol3.Map({
       target: 'map',
       controls: ol3.control.defaults({
@@ -76,6 +96,17 @@ var Map = React.createClass({
 
   _onWeatherChange: function() {
     this.setState(getWeatherState());
+    iconFeature.setGeometry(new ol3.geom.Point([this.state.lon, this.state.lat]));
+    var vectorSource = new ol3.source.Vector({
+      features: [iconFeature]
+    });
+
+    var vectorLayer = new ol3.layer.Vector({
+      source: vectorSource
+    });
+    _map.addLayer(vectorLayer);
+    console.log(vectorLayer);
+
     this._flyTo();
   },
 
