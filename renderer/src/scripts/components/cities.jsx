@@ -1,16 +1,27 @@
 var _ = require('lodash');
 var React          = require('react');
 var ReactPropTypes = React.PropTypes;
+var WeatherActionCreator = require('../actions/weather_action_creator');
 
 var CityItem = React.createClass({
+
+  _onNameClick: function(event) {
+    var reactId = event.target.getAttribute('data-reactId');
+    var re = /\$[0-9]+/;
+    if (re.test(reactId)) {
+      var cityId = reactId.match(re)[0].replace(/\$/, '');
+      WeatherActionCreator.getWeather(1, cityId);
+    }
+  },
+
   render: function() {
     return (
       <li className="list-group-item clearfix">
-        <div className="pull-left">{this.props.city.name}</div>
+        <div className="pull-left">
+          <a href='#' onClick={this._onNameClick}>{this.props.city.name}</a>
+        </div>
         <div className="pull-right">
-          <i className="fa fa-location-arrow"></i>
-          &nbsp;
-          <i className="fa fa-chevron-right"></i>
+          <a href='#'><i className="fa fa-location-arrow"></i></a>
         </div>
       </li>
     );
@@ -28,7 +39,7 @@ var Cities = React.createClass({
     var cities = this.props.cities;
     _.forEach(cities, function(city) {
       items.push(
-        <CityItem city={city} />
+        <CityItem key={city.id} city={city} />
       );
     });
 

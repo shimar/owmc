@@ -6,17 +6,23 @@ var WeatherStore = require('../stores/weather_store');
 var _map = null;
 
 function getWeatherState() {
-  var weather = WeatherStore.get();
-  if (Object.keys(weather).length < 1) {
-    return {
-      lat: 0,
-      lon: 0
-    };
-  }
-  return {
-    lat: weather.coord.lat,
-    lon: weather.coord.lon
+  var cities  = WeatherStore.getCities();
+  var weather = WeatherStore.getWeather();
+
+  var coord   = {
+    lat: 0,
+    lon: 0
   };
+
+  if (cities.length > 0) {
+      coord = cities[0].coord;
+  } else {
+    if (Object.keys(weather).length > 0) {
+      coord.lat = weather.coord.lat;
+      coord.lon = weather.coord.lon;
+    }
+  }
+  return coord;
 }
 
 var Map = React.createClass({

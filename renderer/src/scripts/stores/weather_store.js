@@ -14,13 +14,15 @@ var _cities  = [];
  */
 function update(weather) {
   _weather = weather;
+  _cities  = [];
 }
 
 /**
  * 都市リストを更新する。
  */
 function updateCities(cities) {
-  _cities = cities;
+  _weather = {};
+  _cities  = cities;
 }
 
 var WeatherStore = assign({}, EventEmitter.prototype, {
