@@ -43,8 +43,14 @@ var Cities = React.createClass({
       );
     });
 
+    if (cities.length === 0) {
+      return (
+        <div className="row"></div>
+      );
+    }
+
     return (
-      <div className="row">
+      <div className="row cities">
         <div className="col-xs-12 col-sm-12 col-md-12">
           <ul className="list-group">
             {items}
