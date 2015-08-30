@@ -2,7 +2,7 @@ var AppDispatcher = require('../dispatcher/app_dispatcher');
 var OwmcConstants = require('../constants/owmc_constants');
 var OpenWeatherMapApi = require('../lib/openweathermap/api');
 
-var ActionTypes = OomcConstants.ActionTypes;
+var ActionTypes = OwmcConstants.ActionTypes;
 
 module.exports = {
   findCity: function(queryType, queryText) {

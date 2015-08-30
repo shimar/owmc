@@ -1,11 +1,16 @@
-var React = require('react');
 var _ = require('lodash');
-var SearchBox = require('./search_box.jsx');
-var Weather = require('./weather/weather.jsx');
+var React = require('react');
 
+// components
+var SearchBox = require('./search_box.jsx');
+var Cities    = require('./cities.jsx');
+var Weather   = require('./weather/weather.jsx');
+
+// actions
 var WeatherActionCreator  = require('../actions/weather_action_creator');
 var FindCityActionCreator = require('../actions/find_city_action_creator');
 
+// stores
 var WeatherStore = require('../stores/weather_store');
 
 var queryTypes = [
@@ -14,15 +19,10 @@ var queryTypes = [
   { type: 2, caption: 'Location',  placeholder: 'ex. lat=35.9&lon=139,0' }
 ];
 
-function getWeatherState() {
-  return {
-    weather: WeatherStore.get()
-  };
-}
-
 function getState() {
   return {
-    weather:        WeatherStore.get(),
+    weather:        WeatherStore.getWeather(),
+    cities:         WeatherStore.getCities(),
     queryText:      '',
     queryTypeIndex: 0,
     searching:      false
@@ -45,7 +45,8 @@ var Sidebar = React.createClass({
 
   _onWeatherChange: function() {
     this.setState({
-      weather:   WeatherStore.get(),
+      weather:   WeatherStore.getWeather(),
+      cities:    WeatherStore.getCities(),
       queryText: '',
       searching: false
     });
@@ -102,6 +103,7 @@ var Sidebar = React.createClass({
                       searching={this.state.searching} />
           </div>
         </div>
+        <Cities cities={this.state.cities} />
         <Weather weather={this.state.weather} searching={this.state.searching} />
       </div>
     );

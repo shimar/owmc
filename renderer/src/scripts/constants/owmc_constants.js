@@ -5,6 +5,6 @@ module.exports = {
     GET_WEATHER:     null,
     RECEIVE_WEATHER: null,
     FIND_CITY:       null,
-    RECEIVE_CITY:    null
+    RECEIVE_CITIES:  null
   })
 };

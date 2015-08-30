@@ -1,4 +1,7 @@
+var WeatherActionCreator        = require('../../actions/weather_action_creator');
 var WeatherReceiveActionCreator = require('../../actions/weather_receive_action_creator');
+var CityReceiveActionCreator    = require('../../actions/city_receive_action_creator');
+
 var Endpoints = require('./endpoints');
 
 function buildQueryStringForWeather(queryType, queryString) {
@@ -57,7 +60,7 @@ var OpenWeatherMapApi = {
 
   findCity: function(queryType, queryText) {
     $.get(buildURLForCity(queryType, queryText), function(data) {
-      WeatherReceiveActionCreator.receiveWeather(data);
+      CityReceiveActionCreator.receiveCities(data.list);
     });
   }
 };
