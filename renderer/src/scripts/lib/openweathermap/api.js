@@ -58,10 +58,11 @@ var OpenWeatherMapApi = {
     });
   },
 
-  findCity: function(queryType, queryText) {
-    $.get(buildURLForCity(queryType, queryText), function(data) {
-      CityReceiveActionCreator.receiveCities(data.list);
-    });
+  findCity: function(queryType, queryText, callback) {
+    $.get(buildURLForCity(queryType, queryText), callback);
+    // $.get(buildURLForCity(queryType, queryText), function(data) {
+    //   CityReceiveActionCreator.receiveCities(data.list);
+    // });
   }
 };
 
