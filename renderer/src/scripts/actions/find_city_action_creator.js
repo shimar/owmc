@@ -15,7 +15,7 @@ module.exports = {
         CityReceiveActionCreator.receiveCities(data.list);
       } else {
         // TODO - respond empty list.
-        console.log(data);
+        CityReceiveActionCreator.receiveCities([]);
       }
     });
   }
