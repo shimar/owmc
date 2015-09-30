@@ -6,12 +6,21 @@ var WeatherActionCreator = require('../actions/weather_action_creator');
 var CityItem = React.createClass({
 
   _onNameClick: function(event) {
+    // TODO - the cityId is contained in this.props.city.
     var reactId = event.target.getAttribute('data-reactId');
     var re = /\$[0-9]+/;
     if (re.test(reactId)) {
       var cityId = reactId.match(re)[0].replace(/\$/, '');
       WeatherActionCreator.getWeather(1, cityId);
     }
+  },
+
+  /*
+   * 都市リストの位置アイコンクリックハンドラ
+   */
+  _onLocationArrowClick: function(event) {
+    console.log(this.props.city.coord);
+    // TODO - fire updating the center of map!
   },
 
   render: function() {
@@ -21,7 +30,7 @@ var CityItem = React.createClass({
           <a href='#' onClick={this._onNameClick}>{this.props.city.name}</a>
         </div>
         <div className="pull-right">
-          <a href='#'><i className="fa fa-location-arrow"></i></a>
+          <a href='#' onClick={this._onLocationArrowClick}><i className="fa fa-location-arrow"></i></a>
         </div>
       </li>
     );
@@ -38,6 +47,7 @@ var Cities = React.createClass({
     var items = [];
     var cities = this.props.cities;
     _.forEach(cities, function(city) {
+      console.log(city);
       items.push(
         <CityItem key={city.id} city={city} />
       );
