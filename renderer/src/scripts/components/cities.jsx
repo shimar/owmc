@@ -20,7 +20,6 @@ var CityItem = React.createClass({
    * 都市リストの位置アイコンクリックハンドラ
    */
   _onLocationArrowClick: function(event) {
-    console.log(this.props.city.coord);
     // TODO - fire updating the center of map!
     CoordActionCreator.updateCoord(this.props.city.coord);
   },
