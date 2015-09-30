@@ -4,8 +4,7 @@ var ReactPropTypes = React.PropTypes;
 var WeatherStore = require('../stores/weather_store');
 
 var _map         = null;
-var _iconFeature = null;
-var _iconStyle   = null;
+var _vectorLayer = null;
 
 function getWeatherState() {
   var cities  = WeatherStore.getCities();
@@ -25,7 +24,20 @@ function getWeatherState() {
     }
   }
   return coord;
-}
+};
+
+function createIconStyle() {
+  var iconStyle = new ol3.style.Style({
+    image: new ol3.style.Icon(({
+      anchor: [0.5, 46],
+      anchorXUnits: 'pixels',
+      anchorYUnits: 'pixels',
+      opacity: 0.75,
+      src: 'images/pin32.png'
+    }))
+  });
+  return iconStyle;
+};
 
 var Map = React.createClass({
 
@@ -49,24 +61,6 @@ var Map = React.createClass({
   },
 
   componentDidMount: function() {
-    iconFeature = new ol3.Feature({
-      geometry: new ol3.geom.Point([0, 0]),
-      name: 'Name is a name',
-      population: 4000,
-      rainfall: 500
-    });
-
-    iconStyle = new ol3.style.Style({
-      image: new ol3.style.Icon(({
-        anchor: [0.5, 46],
-        anchorXUnits: 'pixels',
-        anchorYUnits: 'pixels',
-        opacity: 0.75,
-        src: 'images/pin32.png'
-      }))
-    });
-    iconFeature.setStyle(iconStyle);
-
     _map = new ol3.Map({
       target: 'map',
       controls: ol3.control.defaults({
@@ -85,6 +79,7 @@ var Map = React.createClass({
         zoom:   10
       })
     });
+
     WeatherStore.addChangeListener(this._onWeatherChange);
     $('#map').height($(window).height());
     _map.updateSize();
@@ -96,17 +91,7 @@ var Map = React.createClass({
 
   _onWeatherChange: function() {
     this.setState(getWeatherState());
-    iconFeature.setGeometry(new ol3.geom.Point([this.state.lon, this.state.lat]));
-    var vectorSource = new ol3.source.Vector({
-      features: [iconFeature]
-    });
-
-    var vectorLayer = new ol3.layer.Vector({
-      source: vectorSource
-    });
-    _map.addLayer(vectorLayer);
-    console.log(vectorLayer);
-
+    this._addMarker();
     this._flyTo();
   },
 
@@ -127,6 +112,26 @@ var Map = React.createClass({
     _map.beforeRender(pan, bounce);
     view.setZoom(10);
     view.setCenter(ol3.proj.fromLonLat([this.state.lon, this.state.lat]));
+  },
+
+  _addMarker: function() {
+    if (_vectorLayer) {
+      _map.removeLayer(_vectorLayer);
+    }
+    var iconFeature = new ol3.Feature({
+      geometry: new ol3.geom.Point(ol3.proj.fromLonLat([this.state.lon, this.state.lat])),
+      name: 'pin',
+      population: 4000,
+      rainfall: 500
+    });
+    iconFeature.setStyle(createIconStyle());
+    var vectorSource = new ol3.source.Vector({
+      features: [iconFeature]
+    });
+    _vectorLayer = new ol3.layer.Vector({
+      source: vectorSource
+    });
+    _map.addLayer(_vectorLayer);
   },
 
   render: function() {
