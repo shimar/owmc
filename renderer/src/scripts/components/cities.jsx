@@ -2,6 +2,7 @@ var _ = require('lodash');
 var React          = require('react');
 var ReactPropTypes = React.PropTypes;
 var WeatherActionCreator = require('../actions/weather_action_creator');
+var CoordActionCreator   = require('../actions/coord_action_creator');
 
 var CityItem = React.createClass({
 
@@ -21,6 +22,7 @@ var CityItem = React.createClass({
   _onLocationArrowClick: function(event) {
     console.log(this.props.city.coord);
     // TODO - fire updating the center of map!
+    CoordActionCreator.updateCoord(this.props.city.coord);
   },
 
   render: function() {
@@ -47,7 +49,6 @@ var Cities = React.createClass({
     var items = [];
     var cities = this.props.cities;
     _.forEach(cities, function(city) {
-      console.log(city);
       items.push(
         <CityItem key={city.id} city={city} />
       );
