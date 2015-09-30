@@ -7,13 +7,7 @@ var CoordActionCreator   = require('../actions/coord_action_creator');
 var CityItem = React.createClass({
 
   _onNameClick: function(event) {
-    // TODO - the cityId is contained in this.props.city.
-    var reactId = event.target.getAttribute('data-reactId');
-    var re = /\$[0-9]+/;
-    if (re.test(reactId)) {
-      var cityId = reactId.match(re)[0].replace(/\$/, '');
-      WeatherActionCreator.getWeather(1, cityId);
-    }
+    WeatherActionCreator.getWeather(1, this.props.city.id);
   },
 
   /*
