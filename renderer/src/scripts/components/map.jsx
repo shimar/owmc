@@ -82,6 +82,7 @@ var Map = React.createClass({
     });
 
     WeatherStore.addChangeListener(this._onWeatherChange);
+    CoordStore.addChangeListener(this._onCoordChagne);
     $('#map').height($(window).height());
     _map.updateSize();
   },
@@ -92,6 +93,16 @@ var Map = React.createClass({
 
   _onWeatherChange: function() {
     this.setState(getWeatherState());
+    this._addMarker();
+    this._flyTo();
+  },
+
+  _onCoordChagne: function() {
+    var coord = CoordStore.get();
+    this.setState({
+      lon: coord.lon,
+      lat: coord.lat
+    });
     this._addMarker();
     this._flyTo();
   },
