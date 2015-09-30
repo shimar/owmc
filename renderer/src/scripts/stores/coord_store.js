@@ -18,7 +18,7 @@ var CoordStore = assign({}, EventEmitter.prototype, {
   },
 
   emitChange: function() {
-    this.emit(CHANGE_EVENET);
+    this.emit(CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
@@ -30,8 +30,8 @@ var CoordStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-CoordStore.dispatchToken = AppDispatcher.register(function(action)) {
-  swtich (action.type) {
+CoordStore.dispatchToken = AppDispatcher.register(function(action) {
+  switch (action.type) {
   case ActionTypes.UPDATE_COORD:
     update(action.coord);
     CoordStore.emitChange();
@@ -39,6 +39,6 @@ CoordStore.dispatchToken = AppDispatcher.register(function(action)) {
   default:
     break;
   }
-};
+});
 
 module.exports = CoordStore;

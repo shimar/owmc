@@ -2,6 +2,7 @@ var React          = require('react');
 var ReactPropTypes = React.PropTypes;
 
 var WeatherStore = require('../stores/weather_store');
+var CoordStore   = require('../stores/coord_store');
 
 var _map         = null;
 var _vectorLayer = null;
