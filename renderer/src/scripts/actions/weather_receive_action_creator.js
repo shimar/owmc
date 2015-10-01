@@ -9,5 +9,7 @@ module.exports = {
       type: ActionTypes.RECEIVE_WEATHER,
       weather: weather
     });
+    // TODO call the forecast api with the weathers' id.
+    // OpenWeatherMapApi.getForecast(1, id);
   }
 };
