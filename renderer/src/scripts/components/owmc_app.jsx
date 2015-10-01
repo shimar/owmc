@@ -7,9 +7,6 @@ var OwmcApp = React.createClass({
   render: function() {
     return (
       <div id="wrapper">
-        <div className="sidebar">
-          <Sidebar />
-        </div>
         <div className="contents">
           <MainBlock />
         </div>
