@@ -93,7 +93,11 @@ var MainBlock = React.createClass({
                     onSearch={this._onSearch}
                     searching={this.state.searching} />
           <Cities cities={this.state.cities} />
-          <Weather weather={this.state.weather} searching={this.state.searching} />
+          <div className="weather-data-block row-fluid">
+            <div className="col-xs-4 col-sm-4 col-md-4">
+              <Weather weather={this.state.weather} searching={this.state.searching} />
+            </div>
+          </div>
         </div>
         <Map />
       </div>
