@@ -51,6 +51,25 @@ function buildURLForCity(queryType, queryString) {
   return url;
 }
 
+function buildURLForForecast(queryType, queryString) {
+  var url = Endpoints.forecast();
+  url += '?';
+  // query parameters are same to weather api.
+  url += buildQueryStringForWeather(queryType, queryString);
+  url += '&units=metric';
+  return url;
+}
+
+function buildURLForDailyForecast(queryType, queryString) {
+  var url = Endpoints.dailyForecast();
+  url += '?';
+  // query parameters are same to weather api.
+  url += buildQueryStringForWeather(queryType, queryString);
+  url += '&units=metric';
+  return url;
+}
+
+
 var OpenWeatherMapApi = {
   getWeather: function(queryType, queryText) {
     $.get(buildURLForWeather(queryType, queryText), function(data) {
@@ -60,9 +79,20 @@ var OpenWeatherMapApi = {
 
   findCity: function(queryType, queryText, callback) {
     $.get(buildURLForCity(queryType, queryText), callback);
-    // $.get(buildURLForCity(queryType, queryText), function(data) {
-    //   CityReceiveActionCreator.receiveCities(data.list);
-    // });
+  },
+
+  getForecast: function(qeuryType, queryText) {
+    $.get(buildURLForForecast(queryType, queryText), function(data) {
+      console.log(data);
+      // TODO
+    });
+  },
+
+  getDailyForecast: function(queryType, queryText) {
+    $.get(buildURLForDailyForecast(queryType, queryText), function(data) {
+      console.log(data);
+      // TODO
+    });
   }
 };
 
