@@ -31,6 +31,7 @@ var SearchBox = React.createClass({
 
   _fire: function(event) {
     this.props.onSearch(event);
+    this.refs.textInput.getDOMNode().focus();
   },
 
   render: function() {
