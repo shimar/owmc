@@ -20,12 +20,14 @@ var CityItem = React.createClass({
 
   render: function() {
     return (
-      <li className="list-group-item clearfix">
-        <div className="pull-left">
-          <a href='#' onClick={this._onNameClick}>{this.props.city.name}</a>
-        </div>
-        <div className="pull-right">
-          <a href='#' onClick={this._onLocationArrowClick}><i className="fa fa-location-arrow"></i></a>
+      <li className="list-group-item">
+        <div className="row">
+          <div className="col-xs-10">
+            <a href='#' onClick={this._onNameClick}>{this.props.city.name}</a>
+          </div>
+          <div className="col-xs-2">
+            <a href='#' onClick={this._onLocationArrowClick}><i className="fa fa-location-arrow"></i></a>
+          </div>
         </div>
       </li>
     );
@@ -49,15 +51,19 @@ var Cities = React.createClass({
 
     if (cities.length === 0) {
       return (
-        <div className="row"></div>
+        <div className="row-fluid hide"></div>
       );
     }
 
     return (
-      <div className="cities">
-        <ul className="list-group">
-          {items}
-        </ul>
+      <div className="row-fluid">
+        <div className="col-xs-4">
+          <div className="cities">
+            <ul className="list-group">
+              {items}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
