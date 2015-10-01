@@ -20,6 +20,7 @@
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-browserify": "^0.5.1",
+    "gulp-electron": "0.0.9",
     "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^0.10.0",
