@@ -4,6 +4,8 @@ var _ = require('lodash');
 // components.
 var Map       = require('./map.jsx');
 var SearchBox = require('./search_box.jsx');
+var Cities    = require('./cities.jsx');
+var Weather   = require('./weather/weather.jsx');
 
 // query types.
 var queryTypes = [
@@ -82,13 +84,17 @@ var MainBlock = React.createClass({
   render: function() {
     return (
       <div className="container-fluid">
-        <SearchBox queryType={queryTypes[this.state.queryTypeIndex]}
-                  queryTypes={queryTypes}
-                  value={this.state.queryText}
-                  onUserInput={this._onUserInput}
-                  onQueryTypeClick={this._onQueryTypeClick}
-                  onSearch={this._onSearch}
-                  searching={this.state.searching} />
+        <div id="main-overlay">
+          <SearchBox queryType={queryTypes[this.state.queryTypeIndex]}
+                    queryTypes={queryTypes}
+                    value={this.state.queryText}
+                    onUserInput={this._onUserInput}
+                    onQueryTypeClick={this._onQueryTypeClick}
+                    onSearch={this._onSearch}
+                    searching={this.state.searching} />
+          <Cities cities={this.state.cities} />
+          <Weather weather={this.state.weather} searching={this.state.searching} />
+        </div>
         <Map />
       </div>
     );

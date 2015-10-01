@@ -54,12 +54,10 @@ var Cities = React.createClass({
     }
 
     return (
-      <div className="row cities">
-        <div className="col-xs-12 col-sm-12 col-md-12">
-          <ul className="list-group">
-            {items}
-          </ul>
-        </div>
+      <div className="cities">
+        <ul className="list-group">
+          {items}
+        </ul>
       </div>
     );
   }
