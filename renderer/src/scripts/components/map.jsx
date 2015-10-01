@@ -83,8 +83,13 @@ var Map = React.createClass({
 
     WeatherStore.addChangeListener(this._onWeatherChange);
     CoordStore.addChangeListener(this._onCoordChagne);
+
     $('#map').height($(window).height());
     _map.updateSize();
+    window.onresize = function() {
+      $('#map').height($(window).height());
+      _map.updateSize();
+    };
   },
 
   componentWillUnmount: function() {
