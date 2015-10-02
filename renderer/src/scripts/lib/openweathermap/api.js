@@ -75,7 +75,7 @@ var OpenWeatherMapApi = {
     $.get(buildURLForCity(queryType, queryText), callback);
   },
 
-  getForecast: function(qeuryType, queryText, callback) {
+  getForecast: function(queryType, queryText, callback) {
     $.get(buildURLForForecast(queryType, queryText), callback);
   },
 
