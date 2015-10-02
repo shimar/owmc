@@ -1,7 +1,3 @@
-var WeatherActionCreator        = require('../../actions/weather_action_creator');
-var WeatherReceiveActionCreator = require('../../actions/weather_receive_action_creator');
-var CityReceiveActionCreator    = require('../../actions/city_receive_action_creator');
-
 var Endpoints = require('./endpoints');
 
 function buildQueryStringForWeather(queryType, queryString) {
@@ -71,28 +67,20 @@ function buildURLForDailyForecast(queryType, queryString) {
 
 
 var OpenWeatherMapApi = {
-  getWeather: function(queryType, queryText) {
-    $.get(buildURLForWeather(queryType, queryText), function(data) {
-      WeatherReceiveActionCreator.receiveWeather(data);
-    });
+  getWeather: function(queryType, queryText, callback) {
+    $.get(buildURLForWeather(queryType, queryText), callback);
   },
 
   findCity: function(queryType, queryText, callback) {
     $.get(buildURLForCity(queryType, queryText), callback);
   },
 
-  getForecast: function(qeuryType, queryText) {
-    $.get(buildURLForForecast(queryType, queryText), function(data) {
-      console.log(data);
-      // TODO
-    });
+  getForecast: function(qeuryType, queryText, callback) {
+    $.get(buildURLForForecast(queryType, queryText), callback);
   },
 
-  getDailyForecast: function(queryType, queryText) {
-    $.get(buildURLForDailyForecast(queryType, queryText), function(data) {
-      console.log(data);
-      // TODO
-    });
+  getDailyForecast: function(queryType, queryText, callback) {
+    $.get(buildURLForDailyForecast(queryType, queryText), callback);
   }
 };
 
