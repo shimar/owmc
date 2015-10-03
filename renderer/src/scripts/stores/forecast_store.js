@@ -41,4 +41,4 @@ ForecastStore.dispatchToken = AppDispatcher.register(function(action) {
   };
 });
 
-modue.exports = ForecastStore;
+module.exports = ForecastStore;
