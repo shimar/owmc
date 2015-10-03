@@ -16,6 +16,8 @@ var Forecast = React.createClass({
 
     return (
       <div className="forecast-data-block col-xs-4 col-sm-8 col-md-8">
+        <div className="forecast">
+        </div>
       </div>
     );
   }
