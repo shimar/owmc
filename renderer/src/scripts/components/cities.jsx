@@ -56,13 +56,11 @@ var Cities = React.createClass({
     }
 
     return (
-      <div className="row-fluid">
-        <div className="col-xs-4">
-          <div className="cities">
-            <ul className="list-group">
-              {items}
-            </ul>
-          </div>
+      <div className="col-xs-4">
+        <div className="cities">
+          <ul className="list-group">
+            {items}
+          </ul>
         </div>
       </div>
     );

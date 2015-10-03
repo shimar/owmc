@@ -6,6 +6,7 @@ var Map       = require('./map.jsx');
 var SearchBox = require('./search_box.jsx');
 var Cities    = require('./cities.jsx');
 var Weather   = require('./weather/weather.jsx');
+var Forecast  = require('./forecast/forecast.jsx');
 
 // query types.
 var queryTypes = [
@@ -92,8 +93,11 @@ var MainBlock = React.createClass({
                     onQueryTypeClick={this._onQueryTypeClick}
                     onSearch={this._onSearch}
                     searching={this.state.searching} />
-          <Cities cities={this.state.cities} />
-          <Weather weather={this.state.weather} searching={this.state.searching} />
+          <div className="row-fluid">
+            <Cities cities={this.state.cities} />
+            <Weather weather={this.state.weather} searching={this.state.searching} />
+            <Forecast />
+          </div>
         </div>
         <Map />
       </div>
