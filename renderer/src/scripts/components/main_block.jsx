@@ -20,12 +20,14 @@ var WeatherActionCreator  = require('../actions/weather_action_creator');
 var FindCityActionCreator = require('../actions/find_city_action_creator');
 
 // stores.
-var WeatherStore = require('../stores/weather_store');
+var WeatherStore  = require('../stores/weather_store');
+var ForecastStore = require('../stores/forecast_store');
 
 function getState() {
   return {
     weather:        WeatherStore.getWeather(),
     cities:         WeatherStore.getCities(),
+    forecast:       ForecastStore.get(),
     queryText:      '',
     queryTypeIndex: 0,
     searching:      false
@@ -40,9 +42,11 @@ var MainBlock = React.createClass({
 
   componentDidMount: function() {
     WeatherStore.addChangeListener(this._onWeatherChange);
+    ForecastStore.addChangeListener(this._onForecastChange);
   },
 
   componentWillUnmount: function() {
+    ForecastStore.removeChangeListener(this._onForecastChange);
     WeatherStore.removeChangeListener(this._onWeatherChange);
   },
 
@@ -50,8 +54,15 @@ var MainBlock = React.createClass({
     this.setState({
       weather:   WeatherStore.getWeather(),
       cities:    WeatherStore.getCities(),
+      forecast:  {},
       queryText: '',
       searching: false
+    });
+  },
+
+  _onForecastChange: function() {
+    this.setState({
+      forecast: ForecastStore.get()
     });
   },
 
@@ -96,7 +107,7 @@ var MainBlock = React.createClass({
           <div className="row-fluid">
             <Cities cities={this.state.cities} />
             <Weather weather={this.state.weather} searching={this.state.searching} />
-            <Forecast />
+            <Forecast forecast={this.state.forecast} />
           </div>
         </div>
         <Map />
