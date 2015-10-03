@@ -51,7 +51,7 @@ var Cities = React.createClass({
 
     if (cities.length === 0) {
       return (
-        <div className="row-fluid hide"></div>
+        <div className="col-xs-4 hide"></div>
       );
     }
 

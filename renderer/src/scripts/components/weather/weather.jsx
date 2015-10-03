@@ -19,8 +19,7 @@ var Weather = React.createClass({
   render: function() {
     if (Object.keys(this.props.weather).length < 1) {
       return (
-        <div className="row weather hide pull-left">
-        </div>
+        <div className="weather-data-block col-xs-4 col-sm-4 col-md-4 hide"></div>
       );
     }
 
