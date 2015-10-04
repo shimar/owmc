@@ -19,12 +19,12 @@ var Weather = React.createClass({
   render: function() {
     if (Object.keys(this.props.weather).length < 1) {
       return (
-        <div className="weather-data-block col-xs-4 col-sm-4 col-md-4 hide"></div>
+        <div className="weather-data-block col-xs-3 col-sm-3 col-md-3 hide"></div>
       );
     }
 
     return (
-      <div className="weather-data-block col-xs-4 col-sm-4 col-md-4">
+      <div className="weather-data-block col-xs-3 col-sm-3 col-md-3">
         <div className={classNames('weather', 'text-center', 'animated', { 'fadeInDown': !this.props.searching, 'fadeOutUp': this.props.searching})}>
           <h2>{this.props.weather.name},{this.props.weather.sys.country}</h2>
           <Coord coord={this.props.weather.coord} />
