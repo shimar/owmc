@@ -20,7 +20,7 @@ function getWeatherState() {
       coord = cities[0].coord;
   } else {
     if (Object.keys(weather).length > 0) {
-      if (weather.cod === '200') {
+      if (weather.cod === 200) {
         coord.lat = weather.coord.lat;
         coord.lon = weather.coord.lon;
       }
